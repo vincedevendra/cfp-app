@@ -25,6 +25,7 @@ class Person < ActiveRecord::Base
 
 
   validates :email, uniqueness: { case_insensitive: true }, allow_nil: true
+  validates :email, presence: true, on: :update
   validates :bio, length: { maximum: 500 }
   validates :name, :presence => true, allow_nil: true
 
@@ -151,8 +152,8 @@ end
 # Table name: people
 #
 #  id           :integer          not null, primary key
-#  name         :string(255)
-#  email        :string(255)
+#  name         :string
+#  email        :string
 #  bio          :text
 #  demographics :hstore
 #  admin        :boolean          default(FALSE)

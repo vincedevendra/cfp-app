@@ -12,10 +12,6 @@ class ProfilesController < ApplicationController
       current_user.assign_open_invitations if session[:need_to_complete]
       redirect_to (session.delete(:target) || root_url), info: "We've updated your profile. Thanks!"
     else
-      if current_user.email == ""
-        current_user.errors[:email].clear
-        current_user.errors[:email] = " can't be blank"
-      end
       flash.now[:danger] = "Unable to save profile. Please correct the following: #{current_user.errors.full_messages.join(', ')}."
       render :edit
     end
