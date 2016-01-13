@@ -85,13 +85,12 @@ class ProposalsController < ApplicationController
     end
   end
 
-  include ApplicationHelper
   def parse_edit_field
     respond_to do |format|
       format.js do
         render locals: {
           field_id: params[:id],
-          text: markdown(params[:text])
+          text: params[:text]
         }
       end
     end

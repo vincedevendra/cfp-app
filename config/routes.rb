@@ -28,7 +28,6 @@ Rails.application.routes.draw do
       member { get :confirm }
       member { post :set_confirmed }
       member { post :withdraw }
-      member { delete :destroy}
     end
   end
 
